@@ -1,13 +1,13 @@
-const express = require('express');
-const cors = require('cors');
-const { exec } = require('child_process');
-const WebSocket = require('ws');
+import express from 'express';
+import cors from 'cors';
+import { exec } from 'child_process';
+import WebSocket from 'ws';
 
-const fs = require('fs');
-const path = require('path');
-const dotenv = require('dotenv');
-const yaml = require('js-yaml');
-const kill = require('tree-kill');
+import fs from 'fs';
+import path from 'path';
+import dotenv from 'dotenv';
+import yaml from 'js-yaml';
+import kill from 'tree-kill';
 
 const app = express();
 app.use(cors());
@@ -35,7 +35,7 @@ const state = {
 
 let configuration = loadConfiguration();
 
-function obfuscateObjectProperties(object) {
+function obfuscateObjectProperties(object: Record<string, string>) {
   return Object.fromEntries(
     Object.entries(object).map(([key, value]) => [
       key,
@@ -44,15 +44,15 @@ function obfuscateObjectProperties(object) {
   );
 }
 
-function loadConfiguration() {
-  const envFilePath = path.join(__dirname, RELATIVE_PATH_TO_AUTOGPT, '.env');
-  if (fs.existsSync(envFilePath)) {
-    const envFileContents = fs.readFileSync(envFilePath, 'utf8');
-    const parsedEnvFileContents = dotenv.parse(envFileContents);
-    return parsedEnvFileContents;
-  }
-  return {};
-}
+// function loadConfiguration() {
+//   const envFilePath = path.join(__dirname, RELATIVE_PATH_TO_AUTOGPT, '.env');
+//   if (fs.existsSync(envFilePath)) {
+//     const envFileContents = fs.readFileSync(envFilePath, 'utf8');
+//     const parsedEnvFileContents = dotenv.parse(envFileContents);
+//     return parsedEnvFileContents;
+//   }
+//   return {};
+// }
 
 function loadConfiguration() {
   const envFilePath = path.join(__dirname, RELATIVE_PATH_TO_AUTOGPT, '.env');
