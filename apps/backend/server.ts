@@ -44,16 +44,6 @@ function obfuscateObjectProperties(object: Record<string, string>) {
   );
 }
 
-// function loadConfiguration() {
-//   const envFilePath = path.join(__dirname, RELATIVE_PATH_TO_AUTOGPT, '.env');
-//   if (fs.existsSync(envFilePath)) {
-//     const envFileContents = fs.readFileSync(envFilePath, 'utf8');
-//     const parsedEnvFileContents = dotenv.parse(envFileContents);
-//     return parsedEnvFileContents;
-//   }
-//   return {};
-// }
-
 function loadConfiguration() {
   const envFilePath = path.join(__dirname, RELATIVE_PATH_TO_AUTOGPT, '.env');
   if (fs.existsSync(envFilePath)) {
