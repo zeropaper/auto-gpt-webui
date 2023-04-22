@@ -1,3 +1,4 @@
+import { SHELL_COMMANDS } from '../config/SHELL_COMMANDS';
 import { AIProfile } from '../entities/AIProfile';
 import { useSettingsStore } from '../store/useSettingsStore';
 import { useApiService } from './useApiService';
@@ -14,7 +15,7 @@ export function useAutoGPTStarter() {
   ]
     .filter(Boolean)
     .join(' ');
-  const command = `python scripts/main.py ` + autoGptAdditionalCommandArgs;
+  const command = `${SHELL_COMMANDS.startAutoGPT} ` + autoGptAdditionalCommandArgs;
 
   function sendStartCommandWithProfile(aiProfile: AIProfile) {
     if (!aiProfile) {
